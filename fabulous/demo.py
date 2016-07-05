@@ -20,7 +20,7 @@ from fabulous import text, utils, image, debug, xterm256
 
 def wait():
     raw_input("\nPress " + bold("enter") + " for more fun... ")
-    print ""
+    print("")
 
 
 def demo_image():

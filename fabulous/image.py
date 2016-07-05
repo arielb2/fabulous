@@ -186,7 +186,7 @@ def main():
     (options, args) = parser.parse_args(args=sys.argv[1:])
     for imgpath in args:
         for line in Image(imgpath, options.width):
-            print line
+            print(line)
 
 
 if __name__ == '__main__':

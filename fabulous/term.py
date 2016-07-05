@@ -338,7 +338,7 @@ class CursesTerm(UnixTerm):
         elif strcaps.has_key(cap):
             c = self.curses.tigetstr(strcaps[cap])
             if c != '': return c
-        raise ValueError, "capability '%s' not supported" % cap
+        raise ValueError("capability '%s' not supported" % cap)
     
 
 class WinTerm(Term):

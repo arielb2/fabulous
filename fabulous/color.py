@@ -826,8 +826,8 @@ def h1(title, line=OVERLINE):
     """Prints bold text with line beneath it spanning width of terminal
     """
     width = utils.term.width
-    print bold(title.center(width)).as_utf8
-    print bold((line * width)[:width]).as_utf8
+    print(bold(title.center(width)).as_utf8)
+    print(bold((line * width)[:width]).as_utf8)
 
 
 def parse_color(color):
@@ -883,5 +883,5 @@ def section(title, bar=OVERLINE, strm=sys.stdout):
     """Helper function for testing demo routines
     """
     width = utils.term.width
-    print >>strm, bold(title.center(width)).as_utf8
-    print >>strm, bold((bar * width)[:width]).as_utf8
+    print(strm, bold(title.center(width)).as_utf8)
+    print(strm, bold((bar * width)[:width]).as_utf8)

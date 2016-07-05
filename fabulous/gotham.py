@@ -102,15 +102,15 @@ def main():
     """I provide a command-line interface for this module
     """
     print
-    print "-~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~-"
-    print lorem_gotham_title().center(50)
-    print "-~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~-"
+    print("-~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~-")
+    print(lorem_gotham_title().center(50))
+    print("-~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~--~*~-")
     print
     poem = lorem_gotham()
     for n in range(16):
         if n in (4, 8, 12):
             print
-        print poem.next()
+        print(poem.next())
     print
 
 

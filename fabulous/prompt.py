@@ -74,7 +74,7 @@ def input_object(prompt_text, cast = None, default = None,
         if value == '': return default
         try:
             if cast != None: value = cast(value, *castarg, **castkwarg)
-        except ValueError, details:
+        except ValueError as details:
             if cast in NICE_INPUT_ERRORS: # see comment above this constant
                 stderr.write(ERROR_MESSAGE % (NICE_INPUT_ERRORS[cast] % details))
             else: stderr.write(ERROR_MESSAGE % (DEFAULT_INPUT_ERRORS % str(details)))

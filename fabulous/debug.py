@@ -59,7 +59,7 @@ def main():
     """
     for imgpath in sys.argv[1:]:
         for line in DebugImage(imgpath):
-            print line
+            print(line)
 
 
 if __name__ == '__main__':

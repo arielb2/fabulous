@@ -26,7 +26,7 @@ def yes_no(value):
         return True
     if value.lower() in ('no','n'):
         return False
-    raise ValueError, "value should be 'yes' or 'no'"
+    raise ValueError ("value should be 'yes' or 'no'")
 
 
 def file(value, **kwarg):
