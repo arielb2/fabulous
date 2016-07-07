@@ -233,7 +233,7 @@ def main():
         help=("Size of font in points.  Default: %default"))
     (options, args) = parser.parse_args(args=sys.argv[1:])
     if options.list:
-        print "\n".join(sorted(get_font_files()))
+        print("\n".join(sorted(get_font_files())))
         return
     if options.term_color:
         utils.term.bgcolor = options.term_color

@@ -26,7 +26,7 @@ def wait():
 def demo_image():
     section("Semi-Transparent PNG")
     imp = "  from fabulous import image\n  "
-    print bold(imp + 'print image.Image("balls.png")\n')
+    print(bold(imp + 'print image.Image("balls.png")\n'))
 
     balls = 'balls.png'
     fabdir = os.path.dirname(fabulous.__file__)
@@ -45,14 +45,14 @@ def demo_image():
         balls = 'balls.png'
 
     for line in image.Image(balls):
-        print line
+        print(line)
     wait()
 
     section("Yes the output is optimized (JELLY-FISH)")
     imp = "  from fabulous import debug\n  "
-    print bold(imp + 'print debug.DebugImage("balls.png")\n')
+    print(bold(imp + 'print debug.DebugImage("balls.png")\n'))
     for line in debug.DebugImage(balls):
-        print line
+        print(line)
     wait()
 
 
@@ -64,8 +64,8 @@ def demo_text():
     # print text.Text("Fabulous")
     # wait()
 
-    print bold(imp + 'print text.Text("Fabulous", shadow=True, skew=5)\n')
-    print text.Text("Fabulous", shadow=True, skew=5)
+    print(bold(imp + 'print text.Text("Fabulous", shadow=True, skew=5)\n'))
+    print(text.Text("Fabulous", shadow=True, skew=5))
     wait()
 
 
@@ -101,12 +101,12 @@ def demo_color_4bit():
                 cyan("cyan") +" "+
                 white("white"))).as_utf8
 
-    print plain(
+    print (plain(
         'highlight_color(...) ',
         highlight_black('black'), ' ', highlight_red('red'), ' ',
         highlight_green('green'), ' ', highlight_yellow('yellow'), ' ',
         highlight_blue('blue'), ' ', highlight_magenta('magenta'), ' ',
-        highlight_cyan('cyan'), ' ', highlight_white('white')).as_utf8
+        highlight_cyan('cyan'), ' ', highlight_white('white')).as_utf8)
 
     print ("bold(color_bg(...))  " +
            bold(black_bg("black") +" "+
@@ -133,19 +133,19 @@ def demo_color_8bit():
                  "highlight256('indigo', ' lorem ipsum ')",
                  "highlight256('orange', ' lorem ipsum ')",
                  "highlight256('orangered', ' lorem ipsum ')"]:
-        print "%-42s %s" % (code, eval(code))
-    print ''
+        print ("%-42s %s" % (code, eval(code)))
+    print ('')
 
     # grayscales
     line = " "
     for xc in range(232, 256):
         line += bg256(xc, '  ')
-    print line
+    print (line)
     line = " "
     for xc in range(232, 256)[::-1]:
         line += bg256(xc, '  ')
-    print line
-    print ''
+    print (line)
+    print ('')
 
     cube_color = lambda x,y,z: 16 + x + y*6 + z*6*6
     for y in range(6):
@@ -154,7 +154,7 @@ def demo_color_8bit():
             for x in range(6):
                 line += bg256(cube_color(x, y, z), '  ')
             line += " "
-        print line.as_utf8
+        print (line.as_utf8)
 
     wait()
 
@@ -164,15 +164,15 @@ def full_chart():
     line = " "
     for xc in range(232, 256):
         line += bg256(xc, '  ')
-    print line
+    print (line)
     line = " "
     for xc in range(232, 256)[::-1]:
         line += bg256(xc, '  ')
-    print line
-    print ''
+    print (line)
+    print ('')
 
     # cube
-    print ""
+    print ("")
     cube_color = lambda x,y,z: 16 + x + y*6 + z*6*6
     for y in range(6):
         line = " "
@@ -180,8 +180,8 @@ def full_chart():
             for x in range(6):
                 line += bg256(cube_color(x, y, z), '  ')
             line += " "
-        print line.as_utf8
-    print ""
+        print (line.as_utf8)
+    print ("")
 
     def f(xc):
         s = highlight256(xc, "color %03d" % (xc))
@@ -200,14 +200,14 @@ def full_chart():
         half = width // 2
         assert half > len(c1)
         pad = " " * ((width // 2 - len(c1)) // 2)
-        print "%(pad)s%(c1)s%(pad)s%(pad)s%(c2)s" % {'pad': pad, 'c1': c1, 'c2': c2}
+        print ("%(pad)s%(c1)s%(pad)s%(pad)s%(c2)s" % {'pad': pad, 'c1': c1, 'c2': c2})
 
     width = utils.term.width
     for z1, z2 in zip((0, 2, 4), (1, 3, 5)):
         for y1, y2 in zip(range(6), range(6)):
             for x1, x2 in zip(range(6), range(6)):
                 l(cube_color(x1, y1, z1), cube_color(x2, y2, z2))
-        print ""
+        print ("")
 
 
 def main():

@@ -42,7 +42,13 @@ def esc(*codes):
     """
     return "\x1b[%sm" % (";".join([str(c) for c in codes]))
 
+def basestr():
+    if int(sys.version[0]) > 2:
+        basestring = (str, bytes)
+    else:
+        basestring = basestring
 
+    return basestring
 class ColorString(object):
     r"""Abstract base class for stylized string-like objects.
 
@@ -75,7 +81,10 @@ class ColorString(object):
         self.items = items
 
     def __str__(self):
-        return self.fmt % (self.sep.join([unicode(s) for s in self.items]))
+        if int(sys.version[0]) > 2:
+            return self.fmt % (self.sep.join([str(s) for s in self.items]))
+        else:
+            return self.fmt % (self.sep.join([unicode(s) for s in self.items]))
 
     def __repr__(self):
         return repr(unicode(self))
@@ -84,13 +93,13 @@ class ColorString(object):
         return sum([len(item) for item in self.items])
 
     def __add__(self, cs):
-        if not isinstance(cs, (basestring, ColorString)):
+        if not isinstance(cs, (basestr(), ColorString)):
             msg = "Concatenatation failed: %r + %r (Not a ColorString or str)"
             raise TypeError(msg % (type(cs), type(self)))
         return ColorString(self, cs)
 
     def __radd__(self, cs):
-        if not isinstance(cs, (basestring, ColorString)):
+        if not isinstance(cs, (basestr(), ColorString)):
             msg = "Concatenatation failed: %r + %r (Not a ColorString or str)"
             raise TypeError(msg % (type(self), type(cs)))
         return ColorString(cs, self)
@@ -99,7 +108,10 @@ class ColorString(object):
     def as_utf8(self):
         """A more readable way to say ``unicode(color).encode('utf8')``
         """
-        return unicode(self).encode('utf8')
+        if int(sys.version[0]) > 2:
+            return str(self).encode('utf8')
+        else:
+            return unicode(self).encode('utf8')
 
 
 class ColorString256(ColorString):
@@ -845,7 +857,7 @@ def parse_color(color):
     >>> parse_color(grapefruit.Color((0.0, 1.0, 0.0)))
     (0, 255, 0)
     """
-    if isinstance(color, basestring):
+    if isinstance(color, basestr()):
         color = grapefruit.Color.NewFromHtml(color)
     if isinstance(color, int):
         (r, g, b) = xterm256.xterm_to_rgb(color)

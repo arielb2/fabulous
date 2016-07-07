@@ -587,7 +587,7 @@ class WinTerm(Term):
         elif place == 'beginning of screen':
             x = 0
             y = self._get_console_info()['window']['top']
-        else: raise ValueError, "invalid place to move"
+        else: raise ValueError("invalid place to move")
         self._set_position((x, y))
     
     def clear(self, scope = 'screen'):
@@ -629,7 +629,7 @@ class WinTerm(Term):
         elif scope == 'right':
             self.write(' ')
             self.move('left')
-        else: raise ValueError, "invalid scope to clear"
+        else: raise ValueError("invalid scope to clear")
         
     def getch(self):
         """Don't use this yet
@@ -821,11 +821,11 @@ class Magic(object):
             codes = list(codes)
         for code in codes:
             if code not in Magic.DISPLAY.keys():
-                raise ValueError, ("'%s' not a valid display value" % code)
+                raise ValueError("'%s' not a valid display value" % code)
         for color in (fg, bg):
             if color != None:
                 if color not in Magic.COLORS.keys():
-                    raise ValueError, ("'%s' not a valid color" % color)
+                    raise ValueError("'%s' not a valid color" % color)
         return [codes, fg, bg]
     
     @staticmethod
